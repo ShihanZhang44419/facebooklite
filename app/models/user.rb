@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+require 'koala'
+  
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -9,4 +11,10 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+  
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
+  end
+  
+  
 end

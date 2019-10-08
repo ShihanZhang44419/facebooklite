@@ -3,24 +3,20 @@
     <%= link_to "Facebook lite", root_path , id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%#= link_to "Home",   '#' %></li>
-        <li><%#= link_to "Help",   '#' %></li>
-        <li><%#= link_to "Log in", '#' %></li>
-        <li class="dropdown-user">
 
 <% if current_user %>     
 <!-- login buttton -->
     <li class="dropdown-user">
        <a href="#" class="btn dropdown-toggle1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   <!-- user name on button af.login-->  
-           <%= current_user.name %> 
+          <%= current_user.name %> 
   <!-- END OF user name on button -->  
          <b class="caret"></b><!-- drop down sign v -->
        </a>
 
   <!-- drop for log in -->
       <ul class="dropdown-menu">
-              <li><%= link_to "Profile", '#' %></li>
+              <li><%= link_to "Profile", current_user %></li>
   <!-- admin user option -->
   <!-- END OF admin user option -->
               <li class="divider"></li>
@@ -32,7 +28,7 @@
   <!-- END OF drop for log in -->
 <% else %>
 <!--signin-->
-  <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+  <li><%= link_to "Sign in with Facebook", "auth/:provider/callback", id: "sign_in" %></li>
 <!--END of signin-->     
       
             

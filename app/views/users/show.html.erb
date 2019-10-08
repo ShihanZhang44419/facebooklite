@@ -1,0 +1,10 @@
+<% provide(:title, current_user.name) %>
+
+<div class="container">
+<!--title-->
+    <h1>Greeting! <%=@user_first_name%></h1>
+<!--friends -->
+    <h5><%= image_tag(@getPic, :size => "80x90") %></h5>
+    <h5>Email: <%= @user_email%></h5>
+      
+</div>
