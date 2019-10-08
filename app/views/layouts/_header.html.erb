@@ -1,0 +1,20 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Facebook lite", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   '#' %></li>
+        <li><%= link_to "Help",   '#' %></li>
+        <li><%#= link_to "Log in", '#' %></li>
+        <div id="user_nav">
+          <% if current_user %>
+           <li> Signed in as <strong><%= current_user.name %></strong></li>
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+          <% end %>
+          </div>
+      </ul>
+    </nav>
+  </div>
+</header>
