@@ -1,0 +1,32 @@
+<% provide(:title, current_user.name) %>
+<div class="container">
+<div class="row">
+<!--title-->
+<aside class="col-md-4">
+<section class="user_info">
+<!--friends -->
+    <h1>user avater<%#= image_tag(@getPic, :size => "80x90") %></h1>
+    <h2>Today is : <%= DateTime.now.to_date %></h2>
+
+</section>
+</aside>
+
+<div class="col-md-6">
+<section class="litpost_form">
+    <h4>What do you feel right now?</h4>
+    <%= render 'litpost_form' %>
+    <br><br>
+</section>
+    
+    <% if @current_user.litposts.any? %>
+      <h4>Public Status (<%= @litposts.count %>)</h4>
+      <ol class="litposts">
+        <%= render @litposts %>
+      </ol>
+      <%= will_paginate @litposts %>
+    <% end %>
+</div>
+
+
+</div>
+</div>

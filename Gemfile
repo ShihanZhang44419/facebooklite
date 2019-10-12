@@ -33,12 +33,24 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+#init
 gem 'bootstrap-sass', '3.3.7'
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
+gem 'faker'
+
 
 #facebook gem
 gem "koala"
 gem 'omniauth-facebook'
 
+#add friends
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+
+#chart
+gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

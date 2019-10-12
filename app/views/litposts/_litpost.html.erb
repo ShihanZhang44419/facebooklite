@@ -1,0 +1,11 @@
+<li id="litpost-<%= litpost.id %>">
+  <span class="user"><%= link_to litpost.user.name, litpost.user %></span>
+  <span class="content"><%= litpost.content %></span>
+  <span class="timestamp">
+  <h6><i>  Posted <%= time_ago_in_words(litpost.created_at) %> ago.
+    <% if current_user?(litpost.user) %></i>
+      <%= link_to "delete", litpost, method: :delete,
+                                       data: { confirm: "You sure?" } %></h6>
+    <% end %>
+  </span>
+</li>

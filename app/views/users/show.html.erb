@@ -1,10 +1,90 @@
-<% provide(:title, current_user.name) %>
-
+<% provide(:title, @user_last_name) %>
+<!--for current_user profile-->
+<% if @user.id == current_user.id %>
 <div class="container">
+    <h1>Greeting! <%=@user_last_name%></h1>
+    <hr>
+    <div class="row">
 <!--title-->
-    <h1>Greeting! <%=@user_first_name%></h1>
+<aside class="col-md-4">
+<section class="user_info">
+    
 <!--friends -->
-    <h5><%= image_tag(@getPic, :size => "80x90") %></h5>
-    <h5>Email: <%= @user_email%></h5>
-      
+    <h1><%#= image_tag(@getPic, :size => "80x90") %></h1>
+    <h3>My statics</h3>
+    <hr>
+    <h2>Follower growth</h2>
+    <%= line_chart current_user.followings.group_by_day(:created_at).count, ytitle: "Followers count" %>
+    <h2>Status Posted<h2>
+    <%= line_chart current_user.litposts.group_by_day(:created_at).count, ytitle: "Status count" %>   
+</section>
+</aside>
+<div class="col-md-4">
+    <% if @current_user.litposts.any? %>
+      <h3>Status (<%= @current_user.litposts.count %>)</h3>
+      <ol class="litposts">
+        <%= render @litposts %>
+      </ol>
+    <% end %>
 </div>
+<aside class="col-sm-2", style= "float:right";>
+<section class = "frined_list">
+<h4> Following </h4>
+<%= render @following %>
+</section>
+</aside>
+<aside class="col-sm-2", style= "float:right";>
+<section class = "frined_list">
+<h4> Follower </h4>
+<%= render @follower %>
+</section>
+</aside>
+</div>
+ <%= will_paginate @litposts %>
+</div>
+<!--end of current user-->
+<%else%>
+<!--for other user-->
+<div class="container">
+    <h1><%=@user.name%></h1>
+    <h2>Welcome to my page</h3>
+    <hr>
+    <div class="row">
+<!--title-->
+<aside class="col-md-4">
+<section class="user_info">
+<!--friends -->
+    <h1><%#= image_tag(@getPic, :size => "80x90") %></h1>
+    <h3>Follow as Friend</h3>
+    <h5><%= link_to "Follow", follow_user_path(@user) %> || <%= link_to "Unfollow", unfollow_user_path(@user) %></h5>
+</section>
+</aside>
+
+<div class="col-md-4">
+    <% if @user.litposts.any? %>
+      <h3>Status (<%= @user.litposts.count %>)</h3>
+      <ol class="litposts">
+        <%= render @litposts %>
+      </ol>
+     
+    <% end %>
+</div>
+<aside class="col-sm-2", style= "float:right";>
+<section class = "frined_list">
+<h4> Following </h4><hr>
+<%= render @following %>
+</section>
+</aside>
+<aside class="col-sm-2", style= "float:right";>
+<section class = "frined_list">
+<h4> Follower </h4><hr>
+<%= render @follower %>
+</section>
+</aside>
+</div>
+ <%= will_paginate @litposts %>
+</div>
+<!--end of other user-->
+<% end %>
+
+ 

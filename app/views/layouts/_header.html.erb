@@ -1,9 +1,15 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Facebook lite", root_path , id: "logo" %>
+
+<% if current_user %>
+  <%= link_to "Facebook lite", litposts_path , id: "logo" %>
+<%else%>
+  <%= link_to "Facebook lite", root_path , id: "logo" %>
+<%end%>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-
+          <li><%= link_to "Site Activity", activities_path %></li>
+          
 <% if current_user %>     
 <!-- login buttton -->
     <li class="dropdown-user">
@@ -20,7 +26,6 @@
   <!-- admin user option -->
   <!-- END OF admin user option -->
               <li class="divider"></li>
-              <li><%#= link_to "Setting", edit_user_path(current_user) %><li>
               <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
       </li>
     </ul>
