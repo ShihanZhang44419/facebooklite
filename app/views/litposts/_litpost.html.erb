@@ -1,6 +1,9 @@
 <li id="litpost-<%= litpost.id %>">
   <span class="user"><%= link_to litpost.user.name, litpost.user %></span>
-  <span class="content"><%= litpost.content %></span>
+  <span class="content"><%= litpost.content %>
+   <hr> <%= image_tag litpost.picture.url if litpost.picture? %>
+  </span>
+  
   <span class="timestamp">
   <h6><i>  Posted <%= time_ago_in_words(litpost.created_at) %> ago.
     <% if current_user?(litpost.user) %></i>

@@ -30,7 +30,8 @@ gem 'jquery-rails', '4.3.1'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -73,6 +74,7 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

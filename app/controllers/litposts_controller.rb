@@ -40,7 +40,7 @@ class LitpostsController < ApplicationController
     private
         
         def litpost_params
-            params.require(:litpost).permit(:content)
+            params.require(:litpost).permit(:content, :picture)
         end   
         
         def correct_user
