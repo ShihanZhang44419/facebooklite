@@ -53,6 +53,9 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "chartkick"
 gem 'groupdate'
 
+
+gem 'aws-sdk', '~> 3'
+
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
