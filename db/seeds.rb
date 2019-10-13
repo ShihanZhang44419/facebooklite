@@ -11,19 +11,19 @@ Litpost.all.each do |f|
     f.destroy
 end
 
-30.times do
-Litpost.create!(content: Faker::GreekPhilosophers.quote, user_id: Faker::Number.between(from: 1, to: 10))
-end
-
-Litpost.all.each do |f|
-    f.update_attribute :created_at, (rand*10).days.ago
-end
-
 10.times do
 User.create!(name: Faker::Name.name)
 end
 
 User.all.each do |f|
+    f.update_attribute :created_at, (rand*10).days.ago
+end
+
+30.times do
+Litpost.create!(content: Faker::GreekPhilosophers.quote, user_id: Faker::Number.between(from: 1, to: 10))
+end
+
+Litpost.all.each do |f|
     f.update_attribute :created_at, (rand*10).days.ago
 end
 
@@ -34,7 +34,7 @@ end
 # end
 
 9.times do
-    @u = User.find(Faker::Number.unique.between(from: 2, to: 9))
+    @u = User.find(Faker::Number.between(from: 2, to: 9))
     @s = User.find(1)
     @u.follow(@s)
     @u.followers.each do |f|
@@ -42,4 +42,7 @@ end
     end
 end
 
+Follow.all.each do |f|
+    f.update_attribute :created_at, (rand*10).days.ago
+end
    

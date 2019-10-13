@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.id == current_user.id
      
-     # @getEmail = current_user.facebook.get_object("me",fields:'email')
-      #  @user_email = @getEmail['email']
-    #  @getPic = current_user.facebook.get_picture("me")
-      # @getLast_name = current_user.facebook.get_object("me",fields:['last_name'])
-      # @user_last_name = @getLast_name['last_name']
+      @getEmail = current_user.facebook.get_object("me",fields:'email')
+        @user_email = @getEmail['email']
+      @getPic = current_user.facebook.get_picture("me")
+      @getLast_name = current_user.facebook.get_object("me",fields:['last_name'])
+      @user_last_name = @getLast_name['last_name']
    
       @litposts = current_user.litposts.paginate(page: params[:page], :per_page => 6)
     else

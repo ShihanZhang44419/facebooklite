@@ -1,8 +1,8 @@
 <% provide(:title, "Activity") %>
 <div class = "container">
 <h2>Registed user /day</h2>
-<%#= line_chart User.group_by_day(:created_at).count(:name), ytitle: "registed user" %>
+<%= line_chart User.group_by_day(:created_at).count, ytitle: "registed user" %>
 <hr><br>
-<h2>Status created /day</h2>
-<%#= column_chart Litpost.group_by_day(:created_at).count, id: 'cha',ytitle: "posted status" %>
+<h2>Following actions /day</h2>
+<%= column_chart Follow.group_by_day(:created_at).count, id: 'cha',ytitle: "all Following actions" %>
 </div>

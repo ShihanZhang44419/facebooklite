@@ -14,9 +14,8 @@
     <h3>My statics</h3>
     <hr>
     <h2>Follower growth</h2>
-    <%#= line_chart current_user.followings.group_by_day(:created_at).count, ytitle: "Followers count" %>
-    <h2>Status Posted<h2>
-    <%#= line_chart current_user.litposts.group_by_day(:created_at).count, ytitle: "Status count" %>   
+    <%= line_chart current_user.followings.group_by_day(:created_at).count, ytitle: "Followers count" %>
+    
 </section>
 </aside>
 <div class="col-md-4">

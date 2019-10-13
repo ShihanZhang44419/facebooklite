@@ -5,7 +5,8 @@
 <aside class="col-md-4">
 <section class="user_info">
 <!--friends -->
-    <h1>user avater<%#= image_tag(@getPic, :size => "80x90") %></h1>
+    <h1><%= image_tag(@getPic, :size => "80x90") %></h1>
+    <h2><%=@user_email%></h2>
     <h2>Today is : <%= DateTime.now.to_date %></h2>
 
 </section>

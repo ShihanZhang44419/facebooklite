@@ -2,11 +2,12 @@ class LitpostsController < ApplicationController
     before_action :correct_user,   only: :destroy
     def index
     @user = User.all
-    #  @getEmail = current_user.facebook.get_object("me",fields:'email')
-    #  @user_email = @getEmail['email']
-    #  @getPic = current_user.facebook.get_picture("me")
-    #  @getFirst_name = current_user.facebook.get_object("me",fields:['first_name'])
-    #  @user_first_name = @getFirst_name['first_name']
+    
+     @getEmail = current_user.facebook.get_object("me",fields:'email')
+     @user_email = @getEmail['email']
+     @getPic = current_user.facebook.get_picture("me")
+     @getFirst_name = current_user.facebook.get_object("me",fields:['first_name'])
+     @user_first_name = @getFirst_name['first_name']
    
      #display page number
      @litposts = Litpost.all.paginate(page: params[:page], :per_page => 6)
